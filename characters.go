@@ -20,7 +20,7 @@ import (
 )
 
 // PrintableChars is a string of all of the Vestaboard accepted chrs
-const PrintableChars = " ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$()-+&=;:'\"%,./?°"
+const PrintableChars = " ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$() - +&=;: '\"%,.  /? °"
 
 // Color represents constants for supported colors.
 type Color int
@@ -37,6 +37,7 @@ const (
 
 var (
 	ErrInvalidCharacter = errors.New("invalid character")
+	ErrInvalidColor     = errors.New("invalid color")
 
 	charNumbers map[string]int
 )
@@ -44,6 +45,10 @@ var (
 func init() {
 	charNumbers = make(map[string]int)
 	for i, c := range PrintableChars {
+		if _, ok := charNumbers[string(c)]; ok {
+			// skip spaces.
+			continue
+		}
 		charNumbers[string(c)] = i
 	}
 }
@@ -53,6 +58,7 @@ func CharToCode(c string) (int, error) {
 	if !ok {
 		return -1, ErrInvalidCharacter
 	}
+
 	return i, nil
 }
 

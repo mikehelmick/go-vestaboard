@@ -21,13 +21,19 @@ import (
 )
 
 func TestCharIndex(t *testing.T) {
+	t.Parallel()
+
 	for want, inC := range PrintableChars {
+		if c := string(inC); c == " " && want > 0 {
+			continue
+		}
 		got, err := CharToCode(string(inC))
 		if err != nil {
 			t.Errorf("error on %q, err: %v", inC, err)
 		}
+
 		if want != got {
-			t.Errorf("wrong char code, want: %v, got %v", want, got)
+			t.Errorf("wrong char code for %q, want: %v, got %v", inC, want, got)
 		}
 
 		if inC >= 'A' && inC <= 'Z' {
