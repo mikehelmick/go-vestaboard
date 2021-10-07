@@ -62,8 +62,12 @@ func CharToCode(c string) (int, error) {
 	return i, nil
 }
 
-func ValidText(t string) error {
+func ValidText(t string, newlineAccepted bool) error {
 	for i, c := range t {
+		if newlineAccepted && c == '\n' {
+			continue
+		}
+
 		if _, err := CharToCode(string(c)); err != nil {
 			return fmt.Errorf("invalid character %q at position %d, %w", string(c), i, err)
 		}

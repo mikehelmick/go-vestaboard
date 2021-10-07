@@ -51,7 +51,7 @@ func (l *Layout) Print(sx, sy int, s string) error {
 
 	s = strings.ToUpper(s)
 	// Preflight the string before an invalid set.
-	if err := ValidText(s); err != nil {
+	if err := ValidText(s, false); err != nil {
 		return err
 	}
 
@@ -136,7 +136,7 @@ func (c *Client) SendMessage(ctx context.Context, subscriptionID string, l Layou
 
 func (c *Client) SendText(ctx context.Context, subscriptionID string, text string) (*MessageResponse, error) {
 	text = strings.ToUpper(text)
-	if err := ValidText(text); err != nil {
+	if err := ValidText(text, true); err != nil {
 		return nil, fmt.Errorf("invalid message: %w", err)
 	}
 
