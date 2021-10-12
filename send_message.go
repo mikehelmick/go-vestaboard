@@ -20,7 +20,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 )
@@ -60,7 +59,6 @@ func (l *Layout) Print(sx, sy int, s string) error {
 		if x > 5 {
 			return ErrMessageTruncated
 		}
-		log.Printf("(%2d,%2d)", x, y)
 		l[x][y], _ = CharToCode(string(c))
 		y++
 		if y == 22 {
@@ -110,8 +108,6 @@ func (c *Client) SendMessage(ctx context.Context, subscriptionID string, l Layou
 		return nil, fmt.Errorf("failed to encode JSON: %w", err)
 	}
 
-	log.Printf("%q", string(b.Bytes()))
-
 	url := fmt.Sprintf("%s%s/%s/message", c.baseURL, subscriptionsPath, subscriptionID)
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, &b)
 	if err != nil {
@@ -147,8 +143,6 @@ func (c *Client) SendText(ctx context.Context, subscriptionID string, text strin
 	if err := json.NewEncoder(&b).Encode(body); err != nil {
 		return nil, fmt.Errorf("failed to encode JSON: %w", err)
 	}
-
-	log.Printf("%q", string(b.Bytes()))
 
 	url := fmt.Sprintf("%s%s/%s/message", c.baseURL, subscriptionsPath, subscriptionID)
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, &b)
