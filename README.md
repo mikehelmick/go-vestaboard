@@ -18,4 +18,24 @@ From there, use the client methods
 * `Viewer` to get the information from the connected viewer
 * `Subscriptions` to get the subscription information
 * `SendText` to post a message with the default formatting
-  
+
+# Examples
+
+There are a nice set of demos in cmd/
+To use these, set your API Key and Secret as environment variables.
+export APIKEY=YOUR_API_KEY_GOES_HERE
+export SECRET=YOUR_SECRET_GOES_HERE
+
+## Hello World
+
+Does what it says - writes 'Hello World' to your vestaboard.
+
+## Clock
+
+## Game of Life
+
+## Subscriptions
+
+## Test Pattern
+
+## Viewer
