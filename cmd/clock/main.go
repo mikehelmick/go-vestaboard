@@ -24,6 +24,7 @@ import (
 	"github.com/mikehelmick/go-vestaboard/internal/config"
 )
 
+// Write the current time, every 15s.
 func main() {
 	flag.Parse()
 

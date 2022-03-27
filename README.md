@@ -23,11 +23,15 @@ From there, use the client methods
 
 There are a nice set of demos in cmd/
 To use these, set your API Key and Secret as environment variables.
-$ export APIKEY=YOUR_API_KEY_GOES_HERE
-$ export SECRET=YOUR_SECRET_GOES_HERE
+```
+export APIKEY=YOUR_API_KEY_GOES_HERE
+export SECRET=YOUR_SECRET_GOES_HERE
+```
 
 Then just run the 'main.go' in whichever directory:
-$ go run cmd/send-text/main.go
+```
+go run cmd/send-text/main.go
+```
 
 ## Send Text
 

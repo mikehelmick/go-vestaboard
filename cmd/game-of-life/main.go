@@ -24,6 +24,7 @@ import (
 	"github.com/mikehelmick/go-vestaboard/internal/config"
 )
 
+// Conway's game of life!
 func main() {
 	flag.Parse()
 
