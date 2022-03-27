@@ -23,19 +23,32 @@ From there, use the client methods
 
 There are a nice set of demos in cmd/
 To use these, set your API Key and Secret as environment variables.
-export APIKEY=YOUR_API_KEY_GOES_HERE
-export SECRET=YOUR_SECRET_GOES_HERE
+$ export APIKEY=YOUR_API_KEY_GOES_HERE
+$ export SECRET=YOUR_SECRET_GOES_HERE
 
-## Hello World
+Then just run the 'main.go' in whichever directory:
+$ go run cmd/send-text/main.go
+
+## Send Text
 
 Does what it says - writes 'Hello World' to your vestaboard.
 
 ## Clock
 
+Writes out the current time about every 15 seconds.
+
 ## Game of Life
+
+Conway's game of life.
 
 ## Subscriptions
 
+Prints out the current subscriptions tied to the Vestaboard to the command-line.
+
 ## Test Pattern
 
+Writes a fun test-pattern to the Vestaboard.
+
 ## Viewer
+
+Prints results of the Vestaboard 'Viewer' API method to the command-line.
