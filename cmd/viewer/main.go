@@ -22,6 +22,7 @@ import (
 	"github.com/mikehelmick/go-vestaboard/internal/config"
 )
 
+// Logs the results of the 'Viewer' API method.
 func main() {
 	ctx := context.Background()
 	c, err := config.New(ctx)

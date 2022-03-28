@@ -25,6 +25,7 @@ import (
 
 var textFlag = flag.String("text", "HELLO, WORLD!", "text to send")
 
+// Just send a quick 'Hello World' mesasge.
 func main() {
 	flag.Parse()
 

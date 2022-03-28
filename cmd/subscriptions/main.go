@@ -22,6 +22,7 @@ import (
 	"github.com/mikehelmick/go-vestaboard/internal/config"
 )
 
+// Logs the result of the 'Subscriptions' API method.
 func main() {
 	ctx := context.Background()
 	c, err := config.New(ctx)

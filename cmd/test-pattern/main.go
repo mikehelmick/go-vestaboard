@@ -23,6 +23,7 @@ import (
 	"github.com/mikehelmick/go-vestaboard/internal/config"
 )
 
+// Writes out a test-pattern of characters and colors.
 func main() {
 	flag.Parse()
 
