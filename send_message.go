@@ -91,7 +91,7 @@ type LayoutMessage struct {
 
 type Message struct {
 	ID      string `json:"id"`
-	Created string `json:"created"`
+	Created int `json:"created"`
 	Text    string `json:"text,omitempty"`
 }
 
