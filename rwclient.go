@@ -61,8 +61,8 @@ func (c *RWClient) do(req *http.Request, out interface{}) (*http.Response, error
 	}
 
 	ct := resp.Header.Get("Content-Type")
-	if !strings.HasPrefix(ct, "application/json") {
-		return nil, fmt.Errorf("%s: response content-type is not application/json (got %s): body: %s",
+	if !strings.HasPrefix(ct, "text/plain") {
+		return nil, fmt.Errorf("%s: response content-type is not text/plain (got %s): body: %s",
 			errPrefix, ct, body)
 	}
 
@@ -74,7 +74,7 @@ func (c *RWClient) do(req *http.Request, out interface{}) (*http.Response, error
 }
 
 type RWMessageResponse struct {
-	Message `json:"status"`
+	Message string `json:"status"`
 }
 
 func (c *RWClient) SendMessage(ctx context.Context, l Layout) (*MessageResponse, error) {
@@ -100,7 +100,9 @@ func (c *RWClient) SendMessage(ctx context.Context, l Layout) (*MessageResponse,
 		return nil, fmt.Errorf("unexpected status code: %d", resp.StatusCode)
 	}
 
-	mr := MessageResponse(response)
+	mr := MessageResponse{Message: Message{
+		Text: response.Message,
+	}}
 
 	return &mr, nil
 }
