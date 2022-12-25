@@ -25,6 +25,7 @@ const PrintableChars = " ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$() - +&=;: '\"%
 // Color represents constants for supported colors.
 type Color int
 
+const Black Color = 0
 const (
 	PoppyRed Color = iota + 63
 	Orange
