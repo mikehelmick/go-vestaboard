@@ -26,6 +26,8 @@ import (
 	"github.com/mikehelmick/go-vestaboard/internal/config"
 )
 
+var minutes = flag.Int("minutes", 10, "how many minutes to run for")
+
 func InitLayout() vestaboard.Layout {
 	l := vestaboard.NewLayout()
 
@@ -111,8 +113,8 @@ func main() {
 	}
 	log.Printf("result: %+v", msg)
 
-	for i := 0; i < 10; i++ {
-		time.Sleep(15 * time.Second)
+	for i := 0; i < *minutes; i++ {
+		time.Sleep(1 * time.Minute)
 		l = NextFrame(l)
 		msg, err := client.SendMessage(ctx, subs.Subscriptions[0].ID, l)
 		if err != nil {
@@ -120,5 +122,4 @@ func main() {
 		}
 		log.Printf("result: %+v", msg)
 	}
-
 }
